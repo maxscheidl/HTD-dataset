@@ -58,8 +58,8 @@ Your final folder structure should look like this:
             ├── hard_tracks_dataset_coco_val.json
             ├── ...
     ├── metadata
-            ├── classes.txt
-            ├── hard_tracks_dataset_coco_test.json
+            ├──  lvis_v1_clip_a+cname.npy
+            ├──  lvis_v1_train_cat_info.json
 |── saved_models 
     ├── pretrain_weights
         ├── detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis-ec91245d.pth
@@ -75,7 +75,13 @@ You can refer to the [offical instructions](https://github.com/open-mmlab/mmdete
 You can also refer to the short instructions below.
 We provide config files in [configs](../configs).
 
-To run MASA+ on HTD validation set, you can use the following command:
+To run MASA+ on HTD validation set, you can use the following command for single GPU testing:
+
+```shell
+python tools/test.py configs/masa-detic/hard_tracks_dataset/masa_detic_hard_tracks_dataset_val_double_avg.py saved_models/masa_models/detic_masa.pth
+````
+
+For multi-GPU testing, you can use the following command (e.g. 4 GPUs):
 
 ```angular2html
 tools/dist_test.sh configs/masa-detic/hard_tracks_dataset/masa_detic_hard_tracks_dataset_val_double_avg.py saved_models/masa_models/detic_masa.pth 4

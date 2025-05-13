@@ -4,7 +4,8 @@
 ## Step 1: Clone the Repository
 Clone the project repository to your local machine using:
 ```bash
-https://github.com/maxscheidl/HTD-dataset.git
+git clone https://github.com/maxscheidl/HTD-dataset.git
+cd HTD-dataset
 ```
 
 ## Step 2: Create and Activate the Conda Environment

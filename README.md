@@ -169,7 +169,7 @@ Please refer to [INSTALL.md](docs/INSTALL.md)
 
 ## Run Masa+ on HTD
 
-To run MASA+ or other models on HTD please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md)
+To run MASA+ or other models on HTD please refer to [BENCHMARK.md](docs/BENCHMARK.md) for instructions.
 
 ### Acknowledgments
 

@@ -62,7 +62,9 @@ Your final folder structure should look like this:
             ├── hard_tracks_dataset_coco_test.json
 |── saved_models 
     ├── pretrain_weights
+        ├── detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis-ec91245d.pth
     ├── masa_models
+        ├── detic_masa.pth
 ├── ... # Other folders
 ```
 

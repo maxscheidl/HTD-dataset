@@ -1,22 +1,15 @@
 # HardTracksDataset: A Benchmark for Robust Object Tracking under Heavy Occlusion and Challenging Conditions
 
-
-[ [ArXiv](https://arxiv.org/abs/2406.04221) ]
-
 [Computer Vision Lab, ETH Zurich](https://vision.ee.ethz.ch/)
 
 
 <p align="center">
-    <img src="./docs/imgs/dataset_statistics.png" alt="Image" width="100%"/>
+    <img src="./docs/imgs/main.png" alt="Image" width="100%"/>
 </p>
 
 
-## Introduction [TODO]
-The robust association of the same objects across video frames in complex scenes is crucial for many applications, especially Multiple Object Tracking (MOT). Current methods predominantly rely on labeled domain-specific video datasets, which limits the cross-domain generalization of learned similarity embeddings.
-We propose MASA, a novel method for robust instance association learning, capable of matching any objects within videos across diverse domains without tracking labels. Leveraging the rich object segmentation from the Segment Anything Model (SAM), MASA learns instance-level correspondence through exhaustive data transformations. We treat the SAM outputs as dense object region proposals and learn to match those regions from a vast image collection.
-We further design a universal MASA adapter which can work in tandem with foundational segmentation or detection models and enable them to track any detected objects. Those combinations present strong zero-shot tracking ability in complex domains.
-Extensive tests on multiple challenging MOT and MOTS benchmarks indicate that the proposed method, using only unlabeled static images, achieves even better performance than state-of-the-art methods trained with fully annotated in-domain video sequences, in zero-shot association.
-
+## Introduction 
+We introduce the HardTracksDataset (HTD), a novel multi-object tracking (MOT) benchmark specifically designed to address two critical limitations prevalent in existing tracking datasets. First, most current MOT benchmarks narrowly focus on restricted scenarios, such as pedestrian movements, dance sequences, or autonomous driving environments, thus lacking the object diversity and scenario complexity representative of real-world conditions. Second, datasets featuring broader vocabularies, such as, OVT-B and TAO, typically do not sufficiently emphasize challenging scenarios involving long-term occlusions, abrupt appearance changes, and significant position variations. As a consequence, the majority of tracking instances evaluated are relatively easy, obscuring trackers’ limitations on truly challenging cases. HTD addresses these gaps by curating a challenging subset of scenarios from existing datasets, explicitly combining large vocabulary diversity with severe visual challenges. By emphasizing difficult tracking scenarios, particularly long-term occlusions and substantial appearance shifts, HTD provides a focused benchmark aimed at fostering the development of more robust and reliable tracking algorithms for complex real-world situations.
 
 ## Results of state of the art trackers on HTD
 <table>
@@ -104,18 +97,21 @@ Extensive tests on multiple challenging MOT and MOTS benchmarks indicate that th
       <td colspan="9"><em>Transformer-based</em></td>
     </tr>
     <tr>
-      <td>OVTR (TAO classes)</td>
-      <td>22.585</td>
+      <td>OVTR</td>
+      <td>26.585</td>
       <td>44.031</td>
       <td>23.724</td>
-      <td>0.000</td>
-      <td>23.771</td>
+      <td>14.138</td>
+      <td>29.771</td>
       <td>46.338</td>
       <td>24.974</td>
-      <td>0.000</td>
+      <td>21.643</td>
     </tr>
     <tr>
-      <td><strong>Double-MASA (ours)</strong></td>
+      <td colspan="9"></td>
+    </tr>
+    <tr>
+      <td><strong>MASA+</strong></td>
       <td><strong>42.716</strong></td>
       <td><strong>60.364</strong></td>
       <td><strong>35.252</strong></td>
@@ -132,21 +128,9 @@ Extensive tests on multiple challenging MOT and MOTS benchmarks indicate that th
 ## Installation
 Please refer to [INSTALL.md](docs/INSTALL.md)
 
-## Run Double-Masa on HTD
+## Run Masa+ on HTD
 Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md)
-
-### Limitations:
-MASA is a universal instance appearance model that can be added atop of any detection and segmentation models to help them track any objects they have detected. However, there are still some limitations:
-- MASA does not have the ability to track objects that are not detected by the detector.
-- MASA cannot fix inconsistent detections from the detector. If the detector produces inconsistent detections on different video frames, results look flickering.
-- MASA trains on pure unlabeled static images and may not work well in some scenarios with heavy occlusions and noisy detections. Directly using ROI Align for the noisy or occluded objects yields suboptimal features for occlusion handling. We are working on improving the tracking performance in such scenarios.
-
-
-## Contact
-For questions, please contact the [Siyuan Li](https://siyuanliii.github.io/).
-
 
 ### Acknowledgments
 
-The authors would like to thank: [Bin Yan](https://masterbin-iiau.github.io/) for helping and discussion;
-Our code is built on [mmdetection](https://github.com/open-mmlab/mmdetection), [OVTrack](https://github.com/SysCV/ovtrack), [TETA](https://github.com/SysCV/tet), [yolo-world](https://github.com/AILab-CVC/YOLO-World). If you find our work useful, consider checking out their work.
+Our code is built on [mmdetection](https://github.com/open-mmlab/mmdetection), [MASA](https://github.com/siyuanliii/masa), [TETA](https://github.com/SysCV/tet). If you find our work useful, consider checking out their work.

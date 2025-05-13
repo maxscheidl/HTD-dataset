@@ -1,19 +1,48 @@
 
 # Testing on HTD
 
-This document describes how to run Double-MASA on HTD. This guide generalizes to other trackers as well.
+This document describes how to run MASA+ on HTD. This guide generalizes to other trackers as well.
 
 
-## 1. Download HTD [TODO]
+## 1. Download and setup HTD
 
 You can download HTD using one of the following links:
-- [Google Drive](https://drive.google.com/file/d/1q0g2vXk4x5j6b3r7m8z9c4f8e4f8e4f/view?usp=sharing)
-- [OneDrive](https://1drv.ms/u/s!Aq4g2vXk4x5j6b3r7m8z9c4f8e4f?e=0f8e4f)
+- [HuggingFace](https://huggingface.co/datasets/mscheidl/htd)
 
-Please download the dataset and unzip it under the `data` folder. It is recommended to create a folder named `htd` under the `data` folder. The folder structure should look like this:
+
+Please download the dataset and unzip it under the `data` folder. It is recommended to create a folder named `htd` under the `data` folder. 
+Then move the `metadata` folder from the `htd` folder to the `data` folder. The `data` folder structure should look like this:
+``` 
+├── data
+    ├── htd
+        ├── data
+            ├── AnimalTrack
+            ├── BDD
+            ├── ...
+        ├── annotations
+            ├── classes.txt
+            ├── hard_tracks_dataset_coco_test.json
+            ├── hard_tracks_dataset_coco_val.json
+            ├── ...
+    ├── metadata
+            ├── lvis_v1_clip_a+cname.npy
+            ├── lvis_v1_train_cat_info.json
+```
+
+## 2. Download masa weights
+
+You can download the pretrained weights for masa from [HF 🤗](https://huggingface.co/dereksiyuanli/masa/resolve/main/detic_masa.pth) and place it in the `saved_models/masa_models` folder. 
+
+
+## 3. Setup Detic
+
+You can download the pretrained weights for Detic from [here](https://download.openmmlab.com/mmdetection/v3.0/detic/detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis/detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis-ec91245d.pth) and place it under the `saved_models/pretrained_weights` folder.
+
+Your final folder structure should look like this:
 
 ```
 ├── masa
+├── projects
 ├── tools
 ├── configs
 ├── results
@@ -28,32 +57,23 @@ Please download the dataset and unzip it under the `data` folder. It is recommen
             ├── hard_tracks_dataset_coco_test.json
             ├── hard_tracks_dataset_coco_val.json
             ├── ...
-
-|── saved_models # saved_models are the folder to save downloaded pretrained models and also the models you trained.
+    ├── metadata
+            ├── classes.txt
+            ├── hard_tracks_dataset_coco_test.json
+|── saved_models 
     ├── pretrain_weights
     ├── masa_models
+├── ... # Other folders
 ```
 
-## 2. Download masa weights [TODO]
-
-You can download the pretrained weights for masa from [here](https://huggingface.co/dereksiyuanli/masa/resolve/main/masa_weights.zip) and unzip it under the `saved_models` folder. 
-
-
-## 3. Setup Detic [TODO]
-
-You can download the pretrained weights for Detic from [here](https://huggingface.co/dereksiyuanli/detic/resolve/main/detic_weights.zip) and unzip it under the `pretrained_weights` folder.
-
-Then also create a folder named `metadata` under the `data` folder. Then download the CLIP embeddings and the class infos from here [here](https://huggingface.co/dereksiyuanli/detic/resolve/main/metadata.zip) and unzip it under the `metadata` folder.
-
-
-## 4. Run Double-MASA [TODO]
+## 4. Run MASA+ 
 
 This codebase is inherited from [mmdetection](https://github.com/open-mmlab/mmdetection).
 You can refer to the [offical instructions](https://github.com/open-mmlab/mmdetection/blob/master/docs/getting_started.md).
 You can also refer to the short instructions below.
 We provide config files in [configs](../configs).
 
-To run Double-MASA on HTD validation set, you can use the following command:
+To run MASA+ on HTD validation set, you can use the following command:
 
 ```angular2html
 tools/dist_test.sh configs/masa-detic/hard_tracks_dataset/masa_detic_hard_tracks_dataset_val_double_avg.py saved_models/masa_models/detic_masa.pth 4

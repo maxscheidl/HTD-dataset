@@ -1,14 +1,25 @@
 
-# Testing on HTD
+# Benchmark on HTD
 
 This document describes how to run MASA+ on HTD. This guide generalizes to other trackers as well.
 
+## 1. Install dependencies
 
-## 1. Download and setup HTD
+Please refer to the [INSTALL.md](docs/INSTALL.md) for installation instructions.
 
-You can download HTD using one of the following links:
-- [HuggingFace](https://huggingface.co/datasets/mscheidl/htd)
+## 2. Download and setup HTD
 
+We provide the full dataset with annotations and metadata on HuggingFace:
+
+- [HTD Dataset 🤗](https://huggingface.co/datasets/mscheidl/htd)
+
+To download the dataset you can use the HuggingFace CLI. 
+First install the HuggingFace CLI according to the official [HuggingFace documentation](https://huggingface.co/docs/huggingface_hub/main/guides/cli)
+and login with your HuggingFace account. Then, you can download the dataset using the following command:
+
+```bash
+huggingface-cli download mscheidl/htd --repo-type dataset
+```
 
 Please download the dataset and unzip it under the `data` folder. It is recommended to create a folder named `htd` under the `data` folder. 
 Then move the `metadata` folder from the `htd` folder to the `data` folder. The `data` folder structure should look like this:
@@ -29,12 +40,12 @@ Then move the `metadata` folder from the `htd` folder to the `data` folder. The 
             ├── lvis_v1_train_cat_info.json
 ```
 
-## 2. Download masa weights
+## 3. Download masa weights
 
 You can download the pretrained weights for masa from [HF 🤗](https://huggingface.co/dereksiyuanli/masa/resolve/main/detic_masa.pth) and place it in the `saved_models/masa_models` folder. 
 
 
-## 3. Setup Detic
+## 4. Setup Detic
 
 You can download the pretrained weights for Detic from [here](https://download.openmmlab.com/mmdetection/v3.0/detic/detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis/detic_centernet2_swin-b_fpn_4x_lvis-base_in21k-lvis-ec91245d.pth) and place it under the `saved_models/pretrained_weights` folder.
 
@@ -68,7 +79,7 @@ Your final folder structure should look like this:
 ├── ... # Other folders
 ```
 
-## 4. Run MASA+ 
+## 5. Run MASA+ 
 
 This codebase is inherited from [mmdetection](https://github.com/open-mmlab/mmdetection).
 You can refer to the [offical instructions](https://github.com/open-mmlab/mmdetection/blob/master/docs/getting_started.md).

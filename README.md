@@ -125,14 +125,51 @@ We introduce the HardTracksDataset (HTD), a novel multi-object tracking (MOT) be
 </table>
 
 
+## Download Instructions
+
+We provide the full dataset with annotations and metadata on HuggingFace:
+
+- [HTD Dataset 🤗](https://huggingface.co/datasets/mscheidl/htd)
+
+To download the dataset you can use the HuggingFace CLI. 
+First install the HuggingFace CLI according to the official [HuggingFace documentation](https://huggingface.co/docs/huggingface_hub/main/guides/cli)
+and login with your HuggingFace account. Then, you can download the dataset using the following command:
+
+```bash
+huggingface-cli download mscheidl/htd --repo-type dataset
+```
+
+The dataset is organized in the following structure:
+
+``` 
+├── htd
+    ├── data
+        ├── AnimalTrack
+        ├── BDD
+        ├── ...
+    ├── annotations
+        ├── classes.txt
+        ├── hard_tracks_dataset_coco_test.json
+        ├── hard_tracks_dataset_coco_val.json
+        ├── ...
+    ├── metadata
+        ├── lvis_v1_clip_a+cname.npy
+        ├── lvis_v1_train_cat_info.json
+```
+
+The `data` folder contains the videos, the `annotations` folder contains the annotations in COCO (TAO) format, and the `metadata` folder contains the metadata files for running MASA+. 
+If you use HTD independently, you can ignore the `metadata` folder. More information about the annotation format please refer to [ANNOTATIONS.md](docs/ANNOTATIONS.md).
+
+
 ## Installation
+
+If you want to run code from this repository, please first install the dependencies. 
 Please refer to [INSTALL.md](docs/INSTALL.md)
 
-## Dataset Link
-The dataset is available at: [HuggingFace 🤗](https://huggingface.co/datasets/mscheidl/htd)
 
 ## Run Masa+ on HTD
-Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md)
+
+To run MASA+ or other models on HTD please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md)
 
 ### Acknowledgments
 

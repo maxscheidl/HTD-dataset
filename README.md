@@ -128,6 +128,9 @@ We introduce the HardTracksDataset (HTD), a novel multi-object tracking (MOT) be
 ## Installation
 Please refer to [INSTALL.md](docs/INSTALL.md)
 
+## Dataset Link
+The dataset is available at: [HuggingFace 🤗](https://huggingface.co/datasets/mscheidl/htd)
+
 ## Run Masa+ on HTD
 Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md)
 

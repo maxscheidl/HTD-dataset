@@ -136,8 +136,19 @@ First install the HuggingFace CLI according to the official [HuggingFace documen
 and login with your HuggingFace account. Then, you can download the dataset using the following command:
 
 ```bash
-huggingface-cli download mscheidl/htd --repo-type dataset
+huggingface-cli download mscheidl/htd --repo-type dataset --local-dir htd
 ```
+
+The video folders are provided as zip files. Before usage please unzip the files. You can use the following command to unzip all files in the `data` folder.
+Please note that the unzipping process can take a while (especially for _TAO.zip_)
+
+```bash
+cd htd
+for z in data/*.zip; do (unzip -o -q "$z" -d data && echo "Unzipped: $z") & done; wait; echo "✅ Done"
+mkdir -p data/zips        # create a folder for the zip files
+mv data/*.zip data/zips/  # move the zip files to the zips folder
+```
+
 
 The dataset is organized in the following structure:
 

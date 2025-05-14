@@ -3,7 +3,7 @@ dataset_type = 'LVISV1Dataset'
 custom_imports = dict(
     imports=['projects.Detic_new.detic'], allow_failed_imports=False)
 
-num_classes = 150 # 1203 # 150 # 159 
+num_classes = 159 # 1203 # 150 # 159
 lvis_cat_frequency_info = 'data/metadata/lvis_v1_train_cat_info.json'
 
 # 'data/metadata/lvis_v1_clip_a+cname.npy' is pre-computed

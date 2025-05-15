@@ -5,7 +5,7 @@ This document describes how to run MASA+ on HTD. This guide generalizes to other
 
 ## 1. Install dependencies
 
-Please refer to the [INSTALL.md](docs/INSTALL.md) for installation instructions.
+Please refer to the [INSTALL.md](INSTALL.md) for installation instructions.
 
 ## 2. Download and setup HTD
 
